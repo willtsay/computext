@@ -8,7 +8,7 @@ class Controller
 	def initialize(db)
 		@db = db
 		@finished = false
-    @user = User.CERTAIN USER
+    	@user = nil
 	end
 	
 	def start
@@ -66,8 +66,8 @@ class Controller
   end
   def text
     view_contacts # HERE ARE YOUR CONTACTS WHO WOULD YOU LIKE TO TEXT?
-    to = @view.get_contact  #NOW ASKS YOU TO CHOOSE A NUMBER
-    body = @view.get_text_body # ASKS USER TO TYPE IN A MESSAGE
+    to = Display.get_contact  #NOW ASKS YOU TO CHOOSE A NUMBER BY EXPECTING A RETURN OF THE PRIMARY KEY
+    body = Display.get_text_body # ASKS USER TO TYPE IN A MESSAGE
     @texter.send_text(to, body)
     @view.sent_text
   end

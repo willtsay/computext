@@ -33,7 +33,6 @@ class Controller
     #how do i look into the database and check username/password AND that they match
     if user_in_db?(login_info[0], login_info[1])
       @user = User.where(username: login_info[0], password: login_info[1]).first
-      p @user
       @texter = Texter.new(@user.account_sid, @user.auth_token, @user.phone)
     else
       Display.failed_login

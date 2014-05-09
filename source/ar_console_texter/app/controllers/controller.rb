@@ -77,7 +77,7 @@ class Controller
   end
 
   def finish
-    @finish = true
+    exit
   end
 
 end

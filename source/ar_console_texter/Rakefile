@@ -1,5 +1,6 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require_relative 'app/models/users'
 
 require_relative 'config/application'
 
@@ -26,7 +27,9 @@ end
 
 desc "populate the test database with sample data"
 task "db:seed" do
-  require APP_ROOT.join('db', 'seeds.rb')
+  # require APP_ROOT.join('db', 'seeds.rb')
+  User.create({:username => 'Ed', :password => 'cooldude1'})
+  User.create({:username => 'Will', :password => 'cooldude2'})
 end
 
 desc 'Retrieves the current schema version number'

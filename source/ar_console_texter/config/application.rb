@@ -1,4 +1,4 @@
-require 'pathname'
+ require 'pathname'
 require 'sqlite3'
 require 'active_record'
 require 'logger'

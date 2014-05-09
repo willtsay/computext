@@ -32,5 +32,37 @@ class Display
 		return @username, @password
 	end
 
+	def self.failed_login
+		puts "Incorrect Username and/or Password. Try again"
+	end
+
+	def self.show_options
+		puts "1. See Contact List"
+		puts "2. Text a Buddy"
+		puts "3. Log Out"
+		puts "4. Finish"
+		@choice = gets.chomp
+		return @choice
+	end
+
+	def self.invalid_option
+		puts "Not a valid option"
+	end
+
+	def self.view_contacts
+
+
+	end
+
+
+	def self.sent_text
+		puts "Text was successfully sent!"
+	end
+
+	def self.logout
+		puts "You have officially logged out of your account"
+	end
+
+
 
 end

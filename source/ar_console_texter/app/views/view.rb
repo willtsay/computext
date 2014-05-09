@@ -3,8 +3,8 @@ require 'io/console'
 class Display
 
 	def self.intro
-    self.clear_screen
-    self.move_to_home
+	    self.clear_screen
+	    self.move_to_home
 	end
 
   	def self.clear_screen
@@ -49,9 +49,9 @@ class Display
 		puts "Not a valid option"
 	end
 
-	def self.view_contacts
-
-
+	def self.view_contacts(user)
+		puts "Here is your contact list:"
+		return user
 	end
 
 
@@ -69,7 +69,11 @@ class Display
 		return @receiver
 	end
 
-	
+	def get_text_body
+		puts "Message: "
+		@message = gets.chomp
+		return @message
+	end
 
 
 end

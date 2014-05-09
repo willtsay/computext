@@ -12,6 +12,8 @@ class Controller
 	end
 	
 	def start
+		Display.intro
+		Display.welcome
 	    validate(login)
 		until finished?
 	      execute_option(options)
@@ -21,10 +23,7 @@ class Controller
   private
 
 	def login #gets user input for username/password
-		Display.intro
-		Display.welcome
 		Display.login
-
 	end
 
 	def finished? #
@@ -34,7 +33,7 @@ class Controller
   def validate(login_info)
     #how do i look into the database and check username/password AND that they match 
     if login_info[0] != @db.user_name || login_info[1] != @db.password
-      @view.failed_login
+      Display.failed_login
       validate(login)
     else
       @user = @db.match_user(user_name, password)
@@ -44,22 +43,22 @@ class Controller
 
 
   def options
-    @view.show_options
+    Display.show_options
   end
 
   def execute_option(option)
     case option 
-    when "view" then view_contacts
-    when "text" then text
-    when "logout" then logout
-    when "finish" then finish
+    when "1" then view_contacts
+    when "2" then text
+    when "3" then logout
+    when "4" then finish
     else
-      @view.invalid_option
+      Display.invalid_option
     end      
   end
 
   def view_contacts
-    @view.viewcontacts(@valid_contacts) # shows contacts thats it 
+    @view.view_contacts(@valid_contacts) # shows contacts thats it 
   end
   def text
     view_contacts # HERE ARE YOUR CONTACTS WHO WOULD YOU LIKE TO TEXT?
@@ -70,12 +69,12 @@ class Controller
   end
 
   def logout
-    @view.logout
+    Display.logout
     start
   end
 
   def finish
-    @finish = True
+    @finish = true
   end
 
 end

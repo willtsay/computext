@@ -29,8 +29,8 @@ end
 desc "populate the test database with sample data"
 task "db:seed" do
   # require APP_ROOT.join('db', 'seeds.rb')
-  User.create({:username => 'Ed', :password => 'cooldude1', :phone=> "16097517178"})
-  User.create({:username => 'Will', :password => 'cooldude2', :phone=> "15108621673"})
+  User.create({:username => 'Ed', :password => 'cooldude1', :phone=> "16097517178", :account_sid => "ACe031767d584b6e1828f26021ef460105" , :auth_token=>"b6671160c8e47e88e1573cfbc2e9a258" })
+  User.create({:username => 'Will', :password => 'cooldude2', :phone=> "15108621673", :account_sid => "1293123" , :auth_token=>"123123123"})
   Contact.create({:name => 'Will', :number => '15108621673', :user_id => 1})
   Contact.create({:name => 'Ed', :number => '16097517178', :user_id => 2})
   Contact.create({:name => 'Tommy', :number => '7777777777', :user_id => 1})

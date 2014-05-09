@@ -32,7 +32,7 @@ task "db:seed" do
   User.create({:username => 'Will', :password => 'cooldude2', :phone=> "15108621673", :account_sid => "1293123" , :auth_token=>"123123123"})
   Contact.create({:name => 'Will', :number => '15108621673', :user_id => 1})
   Contact.create({:name => 'Ed', :number => '16097517178', :user_id => 2})
-  Contact.create({:name => 'Tommy', :number => '7777777777', :user_id => 1})
+  Contact.create({:name => 'Tommy', :number => '17812588229', :user_id => 1})
   Contact.create({:name => 'Nadia', :number => '231231231', :user_id => 1})
   Contact.create({:name => 'Betsy', :number => '1112231123', :user_id => 1})
   Contact.create({:name => 'Strand', :number => '6666666666', :user_id => 2})

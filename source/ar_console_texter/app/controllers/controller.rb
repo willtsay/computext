@@ -67,10 +67,21 @@ class Controller
   def text
     view_contacts # HERE ARE YOUR CONTACTS WHO WOULD YOU LIKE TO TEXT?
     contact_id = Display.get_contact  #NOW ASKS YOU TO CHOOSE A NUMBER BY EXPECTING A RETURN OF THE PRIMARY KEY
-    body = Display.get_text_body # ASKS USER TO TYPE IN A MESSAGE
-    contact_number = Contact.find(contact_id).number
-    @texter.send_text(contact_number, body)
-    Display.sent_text
+
+    @user.contacts.each do |contact|
+      if contact.id == contact_id.to_i
+        contact_number = Contact.find(contact_id).number
+        body = Display.get_text_body # ASKS USER TO TYPE IN A MESSAGE
+        @texter.send_text(contact_number, body)
+        Display.sent_text
+        Display.intro
+        return execute_option(options)
+      else
+        Display.invalid_contact_id
+        Display.intro
+        return text
+      end
+    end
   end
 
   def logout

@@ -90,9 +90,9 @@ class Display
 		return @message
 	end
 
-	def organize_contacts(objects)
-
-  	end
+	def self.invalid_contact_id
+		puts "Invalid entry.  Please select a valid contact."
+  end
 
 
 

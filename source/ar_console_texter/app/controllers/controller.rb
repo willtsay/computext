@@ -8,7 +8,7 @@ class Controller
 	def initialize(db)
 		@db = db
 		@finished = false
-    @user = nil
+    @user = User.CERTAIN USER
 	end
 	
 	def start
@@ -32,18 +32,22 @@ class Controller
 
   def validate(login_info)
     #how do i look into the database and check username/password AND that they match 
-    if login_info[0] != @db.user_name || login_info[1] != @db.password
+    if user_in_db?(login_info[0], login_info[1])
+      @user = User.where(username: login_info[0], login_info[1] ).first
+      @texter = Texter.new(@user.username, @user.account_sid, @user.auth_token, @user.phone)
+    else
       Display.failed_login
       validate(login)
-    else
-      @user = @db.match_user(user_name, password)
-      @texter = Texter.new(@user.auth_token, @user.account_sid, @user.number)
     end
   end
 
 
   def options
     Display.show_options
+  end
+
+  def user_in_db?(username,password)
+    User.where(username: username, password: password).exists?
   end
 
   def execute_option(option)

@@ -1,27 +1,30 @@
 require_relative 'twilio_logic'
 require_relative '../models/contacts'
 require_relative '../models/users'
+require_relative '../views/view'
 
 class Controller
 	
-	def initialize(db, view)
-		@view = view 
+	def initialize(db)
 		@db = db
 		@finished = false
     @user = nil
 	end
 	
 	def start
-    validate(login)
+	    validate(login)
 		until finished?
-      execute_option(options)
-    end
-  end
+	      execute_option(options)
+	    end
+	end
 
   private
 
 	def login #gets user input for username/password
-		@view.login
+		Display.intro
+		Display.welcome
+		Display.login
+
 	end
 
 	def finished? #

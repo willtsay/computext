@@ -63,6 +63,13 @@ class Display
 		puts "You have officially logged out of your account"
 	end
 
+	def self.get_contact
+		puts "Who do you want to text?"
+		@receiver = gets.chomp
+		return @receiver
+	end
+
+	
 
 
 end

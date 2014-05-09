@@ -3,8 +3,8 @@ require 'io/console'
 class Display
 
 	def self.intro
-    self.clear_screen
-    self.move_to_home
+	    self.clear_screen
+	    self.move_to_home
 	end
 
   	def self.clear_screen
@@ -60,9 +60,13 @@ class Display
 		puts "Not a valid option"
 	end
 
-	def self.view_contacts
-
-
+	def self.view_contacts(user)
+		puts "Here is your contact list:"
+		puts "-"*50
+	  	user.each {|contact|
+	  		puts contact.id.to_s.ljust(3) +contact.name.to_s.ljust(7) +"|  " +contact.number.to_s.ljust(7)
+	  	}
+		# return organized_users
 	end
 
 
@@ -80,6 +84,16 @@ class Display
 		return @receiver
 	end
 
+
+	def get_text_body
+		puts "Message: "
+		@message = gets.chomp
+		return @message
+	end
+
+	def organize_contacts(objects)
+
+  	end
 
 
 

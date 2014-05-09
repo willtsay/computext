@@ -33,6 +33,7 @@ class Controller
     #how do i look into the database and check username/password AND that they match
     if user_in_db?(login_info[0], login_info[1])
       @user = User.where(username: login_info[0], password: login_info[1]).first
+      p @user
       @texter = Texter.new(@user.account_sid, @user.auth_token, @user.phone)
     else
       Display.failed_login
@@ -61,13 +62,15 @@ class Controller
   end
 
   def view_contacts
-    Display.view_contacts(@valid_contacts) # shows contacts thats it
+    Display.view_contacts(@user.contacts) # shows contacts thats it
+
   end
   def text
     view_contacts # HERE ARE YOUR CONTACTS WHO WOULD YOU LIKE TO TEXT?
-    to = Display.get_contact  #NOW ASKS YOU TO CHOOSE A NUMBER BY EXPECTING A RETURN OF THE PRIMARY KEY
+    contact_id = Display.get_contact  #NOW ASKS YOU TO CHOOSE A NUMBER BY EXPECTING A RETURN OF THE PRIMARY KEY
     body = Display.get_text_body # ASKS USER TO TYPE IN A MESSAGE
-    @texter.send_text(to, body)
+    contact_number = Contact.find(contact_id).number
+    @texter.send_text(contact_number, body)
     Display.sent_text
   end
 

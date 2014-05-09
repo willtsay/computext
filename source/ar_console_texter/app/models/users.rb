@@ -1,6 +1,7 @@
 require_relative '../../db/config'
 
 class User < ActiveRecord::Base
-  has_many :contacts
+  validates :username, presence: true, uniqueness: true
 
+  has_many :contacts
 end

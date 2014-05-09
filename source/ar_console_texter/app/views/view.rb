@@ -84,8 +84,7 @@ class Display
 		return @receiver
 	end
 
-
-	def get_text_body
+	def self.get_text_body
 		puts "Message: "
 		@message = gets.chomp
 		return @message

@@ -3,8 +3,8 @@ require 'twilio-ruby'
 class Texter
 
   def initialize account_sid, auth_token, user_number
-    @account_sid = auth_token
-    @auth_token = account_sid
+    @account_sid = account_sid
+    @auth_token = auth_token
     @client = Twilio::REST::Client.new @account_sid, @auth_token
     @user_number = user_number
   end

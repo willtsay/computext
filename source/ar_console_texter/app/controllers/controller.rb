@@ -63,7 +63,7 @@ class Controller
 
   def view_contacts
     Display.view_contacts(@user.contacts) # shows contacts thats it
-    
+
   end
   def text
     view_contacts # HERE ARE YOUR CONTACTS WHO WOULD YOU LIKE TO TEXT?
@@ -81,8 +81,6 @@ class Controller
   def finish
     exit
   end
-
-
 
 end
 

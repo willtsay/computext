@@ -1,6 +1,7 @@
 require 'rake'
 require 'rspec/core/rake_task'
 require_relative 'app/models/users'
+require_relative 'app/models/contacts'
 
 require_relative 'config/application'
 
@@ -28,8 +29,14 @@ end
 desc "populate the test database with sample data"
 task "db:seed" do
   # require APP_ROOT.join('db', 'seeds.rb')
-  User.create({:username => 'Ed', :password => 'cooldude1'})
-  User.create({:username => 'Will', :password => 'cooldude2'})
+  User.create({:username => 'Ed', :password => 'cooldude1', :phone=> "16097517178"})
+  User.create({:username => 'Will', :password => 'cooldude2', :phone=> "15108621673"})
+  Contact.create({:name => 'Will', :number => '15108621673', :user_id => 1})
+  Contact.create({:name => 'Ed', :number => '16097517178', :user_id => 2})
+  Contact.create({:name => 'Tommy', :number => '7777777777', :user_id => 1})
+  Contact.create({:name => 'Nadia', :number => '231231231', :user_id => 1})
+  Contact.create({:name => 'Betsy', :number => '1112231123', :user_id => 1})
+  Contact.create({:name => 'Strand', :number => '6666666666', :user_id => 2})
 end
 
 desc 'Retrieves the current schema version number'

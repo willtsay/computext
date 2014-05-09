@@ -51,7 +51,11 @@ class Display
 
 	def self.view_contacts(user)
 		puts "Here is your contact list:"
-		return user
+		puts "-"*50
+	  	user.each {|contact|
+	  		puts contact.id.to_s.ljust(3) +contact.name.to_s.ljust(7) +"|  " +contact.number.to_s.ljust(7)
+	  	}
+		# return organized_users
 	end
 
 
@@ -74,6 +78,10 @@ class Display
 		@message = gets.chomp
 		return @message
 	end
+
+	def organize_contacts(objects)
+	  	
+  	end
 
 
 end

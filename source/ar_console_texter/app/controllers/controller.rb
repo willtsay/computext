@@ -73,15 +73,14 @@ class Controller
         contact_number = Contact.find(contact_id).number
         body = Display.get_text_body # ASKS USER TO TYPE IN A MESSAGE
         @texter.send_text(contact_number, body)
+        Display.intro
         Display.sent_text
-        Display.intro
         return execute_option(options)
-      else
-        Display.invalid_contact_id
-        Display.intro
-        return text
       end
     end
+    Display.intro
+    Display.invalid_contact_id
+    return text
   end
 
   def logout
